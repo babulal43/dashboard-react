@@ -19,7 +19,7 @@ export default function Navigate(){
                 </Route>
                 <Route path="/" element={<Authlayout />} >
                     <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="details" element={<Details />} />
+                    <Route path="details/:id" element={<Details />} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 
 export default function Details(){
-    const [users, setUsers] = useState([])
-    useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/users/1')
-        .then(response => response.json())
-        .then(json => setUsers(json));
-        // console.log(users)
-    },[])
+    const { id } = useParams(); // Access the ID from the URL
+    const [users, setUsers] = useState(null);
+    
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then((response) => response.json())
+        .then((json) => setUsers(json))
+    }, [id]);
+      
     return(
         <div className="main-content">
             <div className="container">
